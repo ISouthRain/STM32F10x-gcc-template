@@ -1,0 +1,32 @@
+* 说明
+这里以 STM32F103RCT6 为例, 其他芯片只需修改 Makefile 变量文件即可
+* 使用
+#+BEGIN_SRC shell
+make
+#+END_SRC
+
+* 修改 Makefile 以支持对应 芯片, 以及对应修改工程目录
+** 修改以下 Makefile 变量
+1. LD_SCRIPT -- 链接文件, 可以在官方库文件找到对应的链接文件, 一般在 
+    STM32F10x_StdPeriph_Lib_V3.6.0/Project/STM32F10x_StdPeriph_Template/TrueSTUDIO/STM3210xx-xx/stm-flash.ld
+2. STARTUP_FILE -- 启动文件, 使用对应的结构文件
+3. INCLUDE_DIRS -- 包含 .h 文件的目录
+4. C_DEFS -- 你的芯片型号
+5. CPU_FLAGS -- ARM Cortex-M3 MCU  或者 4
+5. SOURCES -- 包含 .c 文件的目录
+6. TARGET -- 生成的 .bin 和 .hex 文件名
+7. User/ 目录为 用户 源码文件目录, 可以自行添加
+
+* 遇到问题??
+#+BEGIN_SRC shell
+# make 编译时出现以下错误??
+Error: registers may not be the same -- `strexb r3,r2,[r3]'
+Error: registers may not be the same -- `strexh r3,r2,[r3]'
+#+END_SRC
+
+解决方法,  一定是修改
+#+BEGIN_SRC shell
+core_cm3.c 宏 __GNUC__ 下面的
+#+END_SRC
+
+[[https://blog.csdn.net/guangod/article/details/96427017][STM32出现Error: registers may not be the same -- `strexb r0,r0,{r...]]
