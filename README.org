@@ -1,5 +1,8 @@
 * 说明
 这里以 STM32F103RCT6 为例, 其他芯片只需修改 Makefile 变量文件即可
+* 依赖工具
+- [[https://developer.arm.com/downloads/-/gnu-rm][Downloads | GNU Arm Embedded Toolchain Downloads – Arm Developer]]
+- [[https://www.gnu.org/software/make/#download][Make - GNU Project - Free Software Foundation]]
 * 使用
 #+BEGIN_SRC shell
 make
